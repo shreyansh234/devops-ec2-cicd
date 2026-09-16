@@ -233,7 +233,8 @@ This project demonstrates a simple CI/CD pipeline for automatically deploying a 
 It helped me understand how cloud servers, GitHub Actions, SSH, Linux, and web servers work together in a real DevOps deployment process.
 
 
-## Project Documents
+## 📘 Project Documentation
+
 ### 🚀 Live Deployment
 
 The web application is successfully deployed and running on an AWS EC2 instance.
@@ -244,11 +245,13 @@ The web application is successfully deployed and running on an AWS EC2 instance.
 
 ### ⚙️ CI/CD Pipeline
 
-GitHub Actions is used to automate the deployment process. Whenever changes are pushed to the `main` branch, the workflow automatically connects to the EC2 instance and deploys the latest version.
+GitHub Actions is used to automate the deployment process. Whenever changes are pushed to the `main` branch, the workflow automatically connects to the AWS EC2 instance and deploys the latest version of the application.
 
 #### GitHub Actions Workflow
 
-![GitHub Actions Workflow](Docs/github-actions-workflow.png)
+The workflow file defines the automated deployment process from GitHub to AWS EC2.
+
+![GitHub Actions Workflow](Docs/github-action-workflow.png)
 
 #### Successful Workflow Execution
 
@@ -260,15 +263,19 @@ The successful GitHub Actions runs confirm that the CI/CD pipeline executed corr
 
 ### ☁️ AWS EC2 Configuration
 
-The application is hosted on an Ubuntu-based AWS EC2 instance.
+The web application is hosted on an Ubuntu-based AWS EC2 instance.
 
 #### EC2 Instance Configuration
+
+This shows the configuration used while setting up the EC2 instance.
 
 ![EC2 Instance Configuration](Docs/ec2-instance-configuration.png)
 
 #### EC2 Instance Launch
 
-![EC2 Instance Launch Success](Docs/ec2-instance-launch-success.png)
+The EC2 instance was successfully created and launched on AWS.
+
+![EC2 Instance Launch Success](Docs/ec2--instance-launch-success.png)
 
 #### EC2 Instance Running
 
@@ -280,7 +287,7 @@ The EC2 instance is running successfully and all status checks have passed.
 
 ### 🔐 Security Configuration
 
-The EC2 Security Group is configured to allow HTTP traffic for accessing the website and restricted SSH access for server administration.
+The EC2 Security Group controls incoming network traffic. HTTP is used to make the website accessible, while SSH is used for server administration and deployment.
 
 ![Security Group Rules](Docs/security-group-rules.png)
 
@@ -288,8 +295,10 @@ The EC2 Security Group is configured to allow HTTP traffic for accessing the web
 
 ### 🔄 Deployment Flow
 
-The complete deployment process follows this flow:
+The complete CI/CD deployment process follows this flow:
 
 `Code Change → GitHub → GitHub Actions → SSH → AWS EC2 → Nginx → Live Website`
 
-This setup demonstrates a working CI/CD pipeline where changes pushed to GitHub can be automatically deployed to the AWS EC2 server.
+Whenever a change is pushed to the `main` branch, GitHub Actions automatically starts the deployment workflow. The workflow connects to the EC2 server through SSH, pulls the latest code and reloads the web server.
+
+This project demonstrates a working automated CI/CD deployment pipeline using GitHub Actions and AWS EC2.
